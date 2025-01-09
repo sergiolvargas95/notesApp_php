@@ -1,5 +1,7 @@
 <?php
 
+namespace Redhood\NotesApp\lib;
+
 use PDO;
 use PDOException;
 
