@@ -1,5 +1,7 @@
 <?php
 
+use Redhood\NotesApp\controllers\AuthController;
+
 require 'vendor/autoload.php';
 
 $router = new \Bramus\Router\Router();
@@ -14,7 +16,8 @@ $router->get('/', function() {
 });
 
 $router->get('/login', function() {
-
+    $controller = new AuthController;
+    $controller->render('Login', 'login/index');
 });
 
 $router->get('/register', function() {

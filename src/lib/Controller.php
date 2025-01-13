@@ -8,11 +8,11 @@ class Controller {
     private View $view;
 
     public function __construct() {
-        $view = new View();
+        $this->view = new View();
     }
 
-    public function render(string $name, array $data = []) {
-        $this->view->render($name, $data);
+    public function render(string $title, string $name, array $data = []) {
+        $this->view->render($title, $name, $data);
     }
 
     public function post(string $param) {
@@ -24,7 +24,7 @@ class Controller {
     }
 
     public function get(string $param) {
-        if(!is_null($param)) {
+        if(!is_null($param)){
             return NULL;
         } else {
             return $_GET[$param];
