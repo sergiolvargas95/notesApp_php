@@ -3,7 +3,7 @@ CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR (25),
     email VARCHAR (25),
-    password VARCHAR (100),
+    password VARCHAR (255),
     created_at DATE NOT NULL,
     PRIMARY KEY (id)
 );

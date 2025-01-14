@@ -16,18 +16,18 @@ class Controller {
     }
 
     public function post(string $param) {
-        if(!is_null($param)) {
+        if(!isset($_POST[$param])) {
             return NULL;
-        } else {
-            return $_POST[$param];
         }
+
+        return $_POST[$param];
     }
 
     public function get(string $param) {
-        if(!is_null($param)){
+        if(!isset($_GET[$param])){
             return NULL;
-        } else {
-            return $_GET[$param];
         }
+
+        return $_GET[$param];
     }
 }

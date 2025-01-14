@@ -11,7 +11,7 @@ class User extends Model {
     private string $email;
     private string $password;
 
-    public function __construct(string $username, string $email, string $password) {
+    public function __construct() {
         parent::__construct();
     }
 
