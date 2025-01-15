@@ -45,12 +45,15 @@ class User extends Model {
         return $this;
     }
 
-    public function create(string $username, string $email, string $password): void {
-        $query = $this->prepare("INSERT INTO users (username, email, password)
-                                    VALUES(:username, :email, :password)");
+    public function create(string $username, string $email, string $password): bool {
+        $query = $this->prepare("INSERT INTO users (username, email, password, created_at)
+                                    VALUES(:username, :email, :password, Now())");
 
-        $query->execute(['username' => $this->username, 'email' => $this->email, 'password' =>$this->password]);
-
+        return $query->execute([
+            'username' => $username,
+            'email' => $email,
+            'password' =>$password
+        ]);
     }
 
     public function findByEmail(string $email):User {

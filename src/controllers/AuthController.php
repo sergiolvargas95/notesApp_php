@@ -2,6 +2,7 @@
 
 namespace Redhood\NotesApp\controllers;
 
+use Exception;
 use Redhood\NotesApp\lib\Controller;
 use Redhood\NotesApp\models\User;
 
@@ -30,22 +31,29 @@ class AuthController extends Controller {
         }
     }
 
-    public function register() {
+    public function register(): void {
         $username = $this->post('username');
         $email = $this->post('email');
         $password = $this->post('password');
         $password2 = $this->post('password2');
 
-        if($password === $password2) {
-            $hashedPassword = password_hash($password2, PASSWORD_DEFAULT);
 
-            if ($this->user->create($username, $email, $hashedPassword)) {
+        if ($password !== $password2) {
+            echo "Passwords must match";
+            return;
+        }
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $userModel = new User();
+            if ($userModel->create($username, $email, $hashedPassword)) {
                 header('Location: /');
             } else {
                 echo "Error registering user.";
             }
-        } else {
-            echo "Passwords must match";
+        } catch (Exception $e) {
+            echo "An error occurred: " . $e->getMessage();
         }
     }
 

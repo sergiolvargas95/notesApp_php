@@ -16,14 +16,14 @@ class Database {
     {
         $this->host = $_ENV['HOST'];
         $this->db = $_ENV['DB'];
-        $this->username = $_ENV['USERNAME'];
+        $this->username = $_ENV['DBUSER'];
         $this->password = $_ENV['PASSWORD'];
         $this->charset = $_ENV['CHARSET'];
     }
 
     public function connect(): PDO {
         try {
-            $dsn = "host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
+            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ];
