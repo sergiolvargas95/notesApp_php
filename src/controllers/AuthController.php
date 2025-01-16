@@ -15,8 +15,6 @@ class AuthController extends Controller {
     }
 
     public function logIn():void {
-        session_start();
-
         $email = $this->post('email');
         $password = $this->post('password');
 
@@ -48,6 +46,11 @@ class AuthController extends Controller {
         try {
             $userModel = new User();
             if ($userModel->create($username, $email, $hashedPassword)) {
+                $user = $userModel->findByEmail($email);
+
+                if($user) {
+                    $_SESSION['user_id'] = $user['id'];
+                }
                 header('Location: /');
             } else {
                 echo "Error registering user.";
@@ -57,8 +60,11 @@ class AuthController extends Controller {
         }
     }
 
+    public static function isAuthenticated(): bool {
+        return isset($_SESSION['user_id']);
+    }
+
     public function logout() {
-        session_start();
         session_destroy();
         header('Location: /');
     }

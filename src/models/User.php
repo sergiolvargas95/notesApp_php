@@ -56,11 +56,13 @@ class User extends Model {
         ]);
     }
 
-    public function findByEmail(string $email):User {
+    public function findByEmail(string $email):?array {
         $query = $this->prepare("SELECT * FROM users WHERE email = :email");
 
-        $query->execute(['email' => $this->email]);
+        $query->execute(['email' => $email]);
 
-        return $query->fetch(PDO::FETCH_ASSOC);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+        return $result ?: null;
     }
 }

@@ -6,15 +6,25 @@ require 'vendor/autoload.php';
 
 $router = new \Bramus\Router\Router();
 
-//session_start();
+session_start();
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../config');
 $dotenv->load();
 
-$router->get('/', function() {
-    echo 'Home';
-});
+$authMiddleware = function() {
+    $publicRoutes = ['/login', '/register', '/loginUser', '/registerUser'];
 
+    if(in_array($_SERVER['REQUEST_URI'], $publicRoutes)) {
+        return;
+    }
+
+    if(!isset($_SESSION['user_id'])) {
+        header('Location: /login');
+        exit();
+    }
+};
+
+//public routes
 $router->get('/register', function() {
     $controller = new AuthController;
     $controller->render('Register', 'register/index');
@@ -35,9 +45,16 @@ $router->post('/loginUser', function() {
     $controller->logIn();
 });
 
+//Protected routes (apply middleware)
+$router->before('GET|POST', '/.*', $authMiddleware);
 
-$router->get('/register', function() {
+$router->get('/', function() {
+    echo 'Home';
+});
 
+$router->get('/logout', function() {
+    $controller = new AuthController;
+    $controller->logout();
 });
 
 $router->run();
