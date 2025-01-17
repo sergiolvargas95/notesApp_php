@@ -18,11 +18,14 @@ $authMiddleware = function() {
         return;
     }
 
-    if(!isset($_SESSION['user_id'])) {
+    if(!AuthController::isAuthenticated()) {
         header('Location: /login');
         exit();
     }
 };
+
+//(apply middleware)
+$router->before('GET|POST', '/.*', $authMiddleware);
 
 //public routes
 $router->get('/register', function() {
@@ -45,9 +48,7 @@ $router->post('/loginUser', function() {
     $controller->logIn();
 });
 
-//Protected routes (apply middleware)
-$router->before('GET|POST', '/.*', $authMiddleware);
-
+//protected routes
 $router->get('/', function() {
     echo 'Home';
 });
