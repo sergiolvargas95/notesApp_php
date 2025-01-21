@@ -1,6 +1,7 @@
 <?php
 
 use Redhood\NotesApp\controllers\AuthController;
+use Redhood\NotesApp\controllers\NoteController;
 
 require 'vendor/autoload.php';
 
@@ -50,7 +51,16 @@ $router->post('/loginUser', function() {
 
 //protected routes
 $router->get('/', function() {
-    echo 'Home';
+    $useriId = $_SESSION['user_id'];
+
+    $controller = new NoteController;
+    $notes = $controller->getAllNotes($useriId);
+
+    if(!is_null($notes)) {
+        $controller->render('Home', 'home/index', $notes);
+    } else {
+        $controller->render('Home', 'home/index');
+    }
 });
 
 $router->get('/logout', function() {
