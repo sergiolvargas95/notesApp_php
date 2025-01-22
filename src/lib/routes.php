@@ -2,12 +2,14 @@
 
 use Redhood\NotesApp\controllers\AuthController;
 use Redhood\NotesApp\controllers\NoteController;
+use Redhood\NotesApp\lib\SessionManager;
+use Redhood\NotesApp\models\Note;
 
 require 'vendor/autoload.php';
 
 $router = new \Bramus\Router\Router();
 
-session_start();
+SessionManager::init();
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../config');
 $dotenv->load();
@@ -51,16 +53,37 @@ $router->post('/loginUser', function() {
 
 //protected routes
 $router->get('/', function() {
-    $useriId = $_SESSION['user_id'];
+    $userId = SessionManager::getUserId();
 
     $controller = new NoteController;
-    $notes = $controller->getAllNotes($useriId);
+    $notes = $controller->getAllNotes($userId);
 
     if(!is_null($notes)) {
         $controller->render('Home', 'home/index', $notes);
     } else {
         $controller->render('Home', 'home/index');
     }
+});
+
+$router->get('/notes/create', function() {
+    $controller = new NoteController;
+    $controller->render('Create Note', 'create/index');
+});
+
+$router->post('/note/noteUser', function(){
+    $userId = SessionManager::getUserId();
+
+    $controller = new NoteController;
+    $controller->create($userId);
+});
+
+$router->get('/note/view', function(){
+    $controller = new NoteController;
+
+    $id = SessionManager::getUserId();
+
+    $note = $controller->getNote($id);
+
 });
 
 $router->get('/logout', function() {

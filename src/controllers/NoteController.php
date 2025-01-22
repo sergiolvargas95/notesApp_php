@@ -3,6 +3,7 @@
 namespace Redhood\NotesApp\controllers;
 
 use Redhood\NotesApp\lib\Controller;
+use Redhood\NotesApp\lib\SessionManager;
 use Redhood\NotesApp\models\Note;
 
 class NoteController extends Controller{
@@ -19,27 +20,33 @@ class NoteController extends Controller{
         }
     }
 
-    public function create() {
-        $title = $this->post('title');
-        $content = $this->post('content');
-        $userId = $this->post('userId');
+    public function create(int $userId) {
+        if(isset($userId)) {
+            $title = $this->post('title');
+            $content = $this->post('content');
 
-        if(!is_null($title) && !is_null($content) && !is_null($userId)) {
-            $newNote = new Note;
+            if(!is_null($title) && !is_null($content) && !is_null($userId)) {
+                $newNote = new Note;
 
-            $note = $newNote->create($title, $content, $userId);
+                $note = $newNote->create($title, $content, $userId);
 
-            if($note) {
-                return [
-                    'error' => false,
-                    'message' => "The note has been created successfully."
-                ];
-            } else {
-                return [
-                    'error' => true,
-                    'message' => "something failed, try later."
-                ];
+                if($note) {
+                    header('Location: /');
+                } else {
+                    return [
+                        'error' => true,
+                        'message' => "something failed, try later."
+                    ];
+                }
             }
+        }
+    }
+
+    public function getNote(int $userId):void {
+        if(isset($userId)) {
+            $id = $this->get('id');
+
+            $note = Note::getNote($id, $userId);
         }
     }
 }

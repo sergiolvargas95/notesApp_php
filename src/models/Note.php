@@ -51,7 +51,7 @@ class Note extends Model {
             return false;
         }
 
-        $query = $this->prepare("INSERT INTO note (title, content, created_at, userId)
+        $query = $this->prepare("INSERT INTO notes (title, content, created_at, userId)
                     VALUES (:title, :content, NOW(), :userId)");
 
         return $query->execute([
@@ -61,6 +61,22 @@ class Note extends Model {
         ]);
     }
 
+    public static function getNote(int $id, int $userId) {
+        if(!is_null($id) && !is_null($userId)) {
+            $db = new Database();
+
+            $query = $db->connect()->prepare("SELECT title, content FROM notes
+                                                WHERE id = :id AND userId = :idUser");
+
+            $query->execute([
+                "idUser" => $userId,
+                "id" => $id
+            ]);
+
+            return $query->fetch(\PDO::FETCH_ASSOC);
+        }
+    }
+
     public static function findByUserId(int $userId):array {
         if(!is_null($userId)) {
 
@@ -68,7 +84,7 @@ class Note extends Model {
 
             $db = new Database();
 
-            $query = $db->connect()->prepare("SELECT title, content FROM notes
+            $query = $db->connect()->prepare("SELECT id, title, content FROM notes
                                         WHERE userId = :idUser;");
 
             $query->execute([
