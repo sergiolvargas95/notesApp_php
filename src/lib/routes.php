@@ -70,7 +70,7 @@ $router->get('/notes/create', function() {
     $controller->render('Create Note', 'create/index');
 });
 
-$router->post('/note/noteUser', function(){
+$router->post('/note/createNote', function(){
     $userId = SessionManager::getUserId();
 
     $controller = new NoteController;
@@ -83,6 +83,12 @@ $router->get('/note/view', function(){
     $id = SessionManager::getUserId();
 
     $note = $controller->getNote($id);
+
+    if(isset($note)) {
+        $controller->render('Edit Note', 'create/index', $note);
+    } else {
+        //TODO: set errors views
+    }
 
 });
 

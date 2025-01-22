@@ -42,11 +42,13 @@ class NoteController extends Controller{
         }
     }
 
-    public function getNote(int $userId):void {
+    public function getNote(int $userId): Array {
         if(isset($userId)) {
             $id = $this->get('id');
 
             $note = Note::getNote($id, $userId);
+
+            return $note;
         }
     }
 }
