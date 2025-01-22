@@ -5,7 +5,7 @@
                 <?php echo isset($data['title']) ? 'Edit Note' : 'Create a New Note'; ?>
             </h5>
 
-            <form method="POST" action="<?php echo isset($data['title']) ? '/note/update' : '/note/noteUser'; ?>">
+            <form method="POST" action="<?php echo isset($data['title']) ? '/note/updateNote' : '/note/createNote'; ?>">
                 <?php if (isset($data['title'])): ?>
                     <!-- Si estás actualizando la nota y necesitas enviar el ID -->
                     <input type="hidden" name="id" value="<?php echo $data['id'] ?? ''; ?>">
