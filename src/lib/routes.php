@@ -85,11 +85,19 @@ $router->get('/note/view', function(){
     $note = $controller->getNote($id);
 
     if(isset($note)) {
-        $controller->render('Edit Note', 'create/index', $note);
+        $nota[] = $note;
+        $controller->render('Edit Note', 'create/index', $nota);
     } else {
         //TODO: set errors views
     }
 
+});
+
+$router->post('/note/updateNote', function() {
+    $userId = SessionManager::getUserId();
+
+    $controller = new NoteController;
+    $controller->update($userId);
 });
 
 $router->get('/logout', function() {

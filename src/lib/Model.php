@@ -3,7 +3,7 @@
 namespace Redhood\NotesApp\lib;
 
 class Model {
-    private Database $db;
+    protected Database $db;
 
     public function __construct() {
         $this->db = new Database();
