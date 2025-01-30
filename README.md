@@ -12,6 +12,51 @@ The application uses **MySQL** as a relational database to store and manage info
 - **Compatible and lightweight:** Operates without external dependencies or frameworks, ensuring compatibility with any modern PHP server.
 - **Ready for learning:** Documented and structured to facilitate understanding, ideal for students or developers looking to grow their skills.
 
+## Project Structure
+```bash NOTESAPP/
+│── src/
+│   │── config/
+│   │   └── .env
+│   │── controllers/
+│   │   │── AuthController.php
+│   │   └── NoteController.php
+│   │── lib/
+│   │   │── Controller.php
+│   │   │── Database.php
+│   │   │── Model.php
+│   │   │── routes.php
+│   │   │── SessionManager.php
+│   │   └── View.php
+│   │── models/
+│   │   │── Note.php
+│   │   └── User.php
+│   │── public/
+│   │   │── images/
+│   │   │   └── basura-llena.png
+│   │   │── js/
+│   │   │   └── scripts.js
+│── views/
+│   │── create/
+│   │   └── index.php
+│   │── home/
+│   │   └── index.php
+│   │── login/
+│   │   └── index.php
+│   │── modals/
+│   │   └── deleteModal.php
+│   │── register/
+│   │   └── layout.php
+│   │── app.php
+│── vendor/
+│── .gitignore
+│── .htaccess
+│── composer.json
+│── composer.lock
+│── index.php
+│── README.md
+│── schema.sql
+```
+
 ## Prerequisites
 - PHP >= 8
 - Composer
