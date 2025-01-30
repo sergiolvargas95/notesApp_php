@@ -80,9 +80,9 @@ $router->post('/note/createNote', function(){
 $router->get('/note/view', function(){
     $controller = new NoteController;
 
-    $id = SessionManager::getUserId();
+    $idUser = SessionManager::getUserId();
 
-    $note = $controller->getNote($id);
+    $note = $controller->getNote($idUser);
 
     if(isset($note)) {
         $nota[] = $note;
@@ -103,6 +103,13 @@ $router->post('/note/updateNote', function() {
 $router->get('/logout', function() {
     $controller = new AuthController;
     $controller->logout();
+});
+
+$router->post('/note/delete', function() {
+    $idUser = SessionManager::getUserId();
+
+    $note = new NoteController;
+    $note->deleteNote($idUser);
 });
 
 $router->run();

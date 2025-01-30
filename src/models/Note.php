@@ -146,6 +146,20 @@ class Note extends Model {
         }
     }
 
+    public static function deleteById(int $noteId, int $idUser): bool {
+        $db = new Database();
+
+        $query = "DELETE FROM notes WHERE id = :id AND userId = :idUser";
+
+        $stmt = $db->connect()->prepare($query);
+
+        return $stmt->execute([
+            'id' => $noteId,
+            'idUser' => $idUser
+        ]);
+    }
+
+
     public function getId(): int
     {
         return $this->id;

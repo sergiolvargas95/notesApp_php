@@ -73,4 +73,21 @@ class NoteController extends Controller{
             return $note;
         }
     }
+
+    public function deleteNote(int $idUser) {
+        $noteId = intval($_POST['id'] ?? 0);
+
+        if ($noteId > 0) {
+            $deleted = Note::deleteById($noteId, $idUser);
+
+            if ($deleted) {
+                header('Location: /');
+                exit;
+            } else {
+                echo "Failed to delete the note.";
+            }
+        } else {
+            echo "Invalid note ID.";
+        }
+    }
 }
