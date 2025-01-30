@@ -36,17 +36,17 @@ NOTESAPP/
 │   │   │   └── basura-llena.png
 │   │   │── js/
 │   │   │   └── scripts.js
-│── views/
-│   │── create/
-│   │   └── index.php
-│   │── home/
-│   │   └── index.php
-│   │── login/
-│   │   └── index.php
-│   │── modals/
-│   │   └── deleteModal.php
-│   │── register/
-│   │   └── layout.php
+│   |──views/
+│   |   │── create/
+│   │   |   └── index.php
+│   |   │── home/
+│   │   |   └── index.php
+│   │   |── login/
+│   │   |   └── index.php
+│   │   |── modals/
+│   │   |   └── deleteModal.php
+│   |   │── register/
+│   │   |   └── layout.php
 │   │── app.php
 │── vendor/
 │── .gitignore
