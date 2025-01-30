@@ -13,7 +13,8 @@ The application uses **MySQL** as a relational database to store and manage info
 - **Ready for learning:** Documented and structured to facilitate understanding, ideal for students or developers looking to grow their skills.
 
 ## Project Structure
-```bash NOTESAPP/
+```bash
+NOTESAPP/
 │── src/
 │   │── config/
 │   │   └── .env
