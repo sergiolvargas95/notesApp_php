@@ -106,8 +106,17 @@ To set up and run this project, ensure you have the following installed:
 
 # Usege Guide
 1. **Login Screen 🔐**
-  - The app starts withe a login form, enter your username and passowrd to access. If you do not have an account created, you can access the registration view and create a new account.
+  - The app starts withe a login form, enter your username and passowrd to access. If you do not have an account created, you can access the registration view and create a new account. If you do not have an account created, you can access the registration view and create a new account. The _password_hash method_ is used to encrypt the password and save it to the database. This uses the bcrypt algorithm, which is derived from classes based on the Blowfish encryption. This algorithm uses adaptive hashing techniques, making it highly resistant to brute force attacks.
     
-![login_notes](https://github.com/user-attachments/assets/2d184829-a9fa-4616-928f-b450b6c36ccf)
+  ![login_notes](https://github.com/user-attachments/assets/2d184829-a9fa-4616-928f-b450b6c36ccf)
 
+2. **Home Screen (Notes List) 🏠**
+  - The home page shows all the notes created by the user, each note shows its title and content, if we click on the title we can edit it, the trash icon can delete each note.
+
+  ![home_notes](https://github.com/user-attachments/assets/d4018523-fef4-47a8-9018-4de11e6929ff)
+
+3. **Create Note Screen 📝**
+   - Through the navigation bar we can create new notes, we fill in the title and content fields, and then we create our new note and return to the list.
+   
+   ![createnote](https://github.com/user-attachments/assets/0a5a1625-f0cb-4967-95fd-efa09770e04b)
 
