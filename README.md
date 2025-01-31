@@ -116,7 +116,7 @@ To set up and run this project, ensure you have the following installed:
   ![home_notes](https://github.com/user-attachments/assets/d4018523-fef4-47a8-9018-4de11e6929ff)
 
 3. **Create Note Screen 📝**
-   - Through the navigation bar we can create new notes, we fill in the title and content fields, and then we create our new note and return to the list.
+  - Through the navigation bar we can create new notes, we fill in the title and content fields, and then we create our new note and return to the list.
    
    ![createnote](https://github.com/user-attachments/assets/0a5a1625-f0cb-4967-95fd-efa09770e04b)
 
