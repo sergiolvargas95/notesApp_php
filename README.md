@@ -103,3 +103,11 @@ To set up and run this project, ensure you have the following installed:
     ```sh
     php -S localhost:8000
     ```
+
+# Usege Guide
+1. **Login Screen 🔐**
+  - The app starts withe a login form, enter your username and passowrd to access. If you do not have an account created, you can access the registration view and create a new account.
+    
+![login_notes](https://github.com/user-attachments/assets/2d184829-a9fa-4616-928f-b450b6c36ccf)
+
+
