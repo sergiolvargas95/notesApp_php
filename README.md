@@ -120,3 +120,68 @@ To set up and run this project, ensure you have the following installed:
    
    ![createnote](https://github.com/user-attachments/assets/0a5a1625-f0cb-4967-95fd-efa09770e04b)
 
+4. **Edit Note Screen ✏️**
+  - Access by clicking on a note's title, the user can modify the title or content and save changes.
+
+  ![edit_note](https://github.com/user-attachments/assets/7da7f8f4-8635-4966-8967-8b7299626360)
+
+5. **Deleting Notes 🗑**
+  - On the Home Screen, click the trash can and the note is deleted after confirming the action.
+    
+  ![delete_note](https://github.com/user-attachments/assets/c859ce44-cc77-4e9e-a872-bb723436850c)
+
+## Best Practices Implemented in the Project
+This project, built with PHP 8.3.11 and MySQL 8.0.40, follows several best practices to ensure maintainability, security, and scalability. Below are the key principles applied:
+
+1️⃣ **MVC Architecture 🏗**
+- Clear separation of Models, Views, and Controllers.
+- Enhances maintainability and scalability by following the Separation of Concerns principle.
+  
+2️⃣ **Object-Oriented Programming (OOP) 🧩**
+- Encapsulation through private attributes with getter and setter methods.
+- Improved code reusability and maintainability using well-structured classes.
+  
+3️⃣ **Secure Database Queries with Prepared Statements 🔐**
+- PDO prepared statements prevent SQL Injection attacks.
+- Ensures data integrity by securely binding parameters.
+  
+4️⃣ **Session Management 🏠**
+- SessionManager.php handles user authentication securely and efficiently.
+- Avoids exposing session data directly.
+  
+5️⃣ **Strongly Typed Variables and Methods ✅**
+- Uses strict type declarations (int, string, etc.) to prevent unexpected behavior.
+- Improves code readability and reduces runtime errors.
+  
+6️⃣ **Code Reusability and Modularity 🔄**
+- Methods like fromArray() streamline object instantiation from database queries.
+- Encourages DRY (Don't Repeat Yourself) principle.
+  
+7️⃣ **Data Validation and Security Measures 🔒**
+- Input validation before inserting or updating records in the database.
+- Prevents unauthorized data modifications and ensures data consistency.
+  
+8️⃣ **Organized Project Structure 📂**
+- Well-structured directories:
+  - `controllers/` → Handles request processing.
+  - `models/` → Defines business logic and data structures.
+  - `views/` → Manages UI rendering.
+  - `lib/` → Contains utilities like database connections and session handling.
+Ensures a clean and modularized codebase.
+
+9️⃣ **Environment Configuration with .env ⚙️**
+- Stores database credentials and sensitive configurations securely.
+- Prevents hardcoding credentials within the source code.
+
+🔟 **Dependency Management with Composer 📦**
+- composer.json manages third-party libraries and dependencies.
+- Simplifies package installation and autoloading.
+- Further Improvements
+
+To enhance this project, additional best practices could be implemented, such as:
+
+- Error logging and debugging mechanisms.
+- Unit testing to ensure code reliability.
+- JWT authentication for secure user sessions.
+  
+By adhering to these best practices, the project maintains a scalable, secure, and maintainable architecture, making future enhancements easier to implement. 🚀
