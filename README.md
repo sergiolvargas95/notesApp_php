@@ -57,7 +57,7 @@ NOTESAPP/
 │── README.md
 │── schema.sql
 ```
-## Componentes principales
+## Main components
 - `controllers/`: Handle requests and coordinate logic between model and view.
 - `models/`: Represent data and business logic of the application.
 - `views/`: Render the interface and display data to the user.
@@ -103,6 +103,26 @@ To set up and run this project, ensure you have the following installed:
     ```sh
     php -S localhost:8000
     ```
+## **Libraries and Dependencies Used 📦**
+This project utilizes the following libraries and dependencies to enhance functionality, maintainability, and security:
+
+1. **Composer 🎼**
+  - Dependency manager for PHP that automates package installation and autoloading.
+  - Ensures efficient management of third-party libraries.
+2. **PHP Data Objects (PDO) 🛢**
+  - Secure database connection and query execution using prepared statements.
+  - Prevents SQL Injection and enhances database interaction.
+3. **Dotenv (vlucas/phpdotenv) 🔐**
+  - Manages environment variables for secure configuration.
+  - Stores sensitive data like database credentials outside the source code.
+4. **Bramus Router (bramus/router) 🚏**
+  - Lightweight routing library for handling URL routes in a structured way.
+  - Enables clean URLs and improves MVC-based request handling.
+5. **Bootstrap 🎨**
+  - Provides a responsive UI framework for consistent styling.
+  - Enhances user experience with prebuilt components.
+
+These libraries contribute to a secure, scalable, and well-structured project. 🚀
 
 # Usege Guide
 1. **Login Screen 🔐**
@@ -178,7 +198,7 @@ Ensures a clean and modularized codebase.
 - Simplifies package installation and autoloading.
 - Further Improvements
 
-To enhance this project, additional best practices could be implemented, such as:
+### To enhance this project, additional best practices could be implemented, such as:
 
 - Error logging and debugging mechanisms.
 - Unit testing to ensure code reliability.
